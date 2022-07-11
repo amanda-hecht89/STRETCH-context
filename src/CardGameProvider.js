@@ -36,17 +36,17 @@ export default function CardGameProvider({ children }) {
         
     setSelectedCard(null);
     
-    const everything = {
-      deck, setDeck, playerOneHand, setPlayerOneHand, selectedCard, setSelectedCard, playerTwoHand,
-      setPlayerTwoHand, playerThreeHand, setPlayerThreeHand, from, setFrom, to, setTo,
-        
-    };
-
     
-    return <CardGameContext.Provider value={everything}>
-      {children}
-    </CardGameContext.Provider>;
+    
   }
+  const everything = {
+    deck, setDeck, playerOneHand, setPlayerOneHand, selectedCard, setSelectedCard, playerTwoHand,
+    setPlayerTwoHand, playerThreeHand, setPlayerThreeHand, from, setFrom, to, setTo,
+    
+  };
+  return <CardGameContext.Provider value={everything}>
+    {children}
+  </CardGameContext.Provider>;
 }
 export function useCardGameContext() {
   return useContext(CardGameContext);

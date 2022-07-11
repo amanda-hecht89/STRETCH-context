@@ -1,10 +1,10 @@
 import './App.css';
-import CardGameProvider from './CardGameProvider';
+import CardGameSection from './CardGameSection';
 
 function App() {
   return (
     <div className='App'>
-      <CardGameProvider />
+      <CardGameSection />
     </div>
 
   );
