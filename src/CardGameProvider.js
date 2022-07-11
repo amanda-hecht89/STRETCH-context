@@ -45,4 +45,4 @@ export default function CardGameProvider({ children }) {
         return <CardGameContext.Provider value={everything}>
     {children}
   </CardGameContext.Provider>;
-}
+    }
