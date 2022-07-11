@@ -4,7 +4,7 @@ import cardsData from './cards-data';
 const CardGameContext = createContext();
 
 export default function CardGameProvider({ children }) {
-  const [deck, setDeck] = useState(initialCards);
+  const [deck, setDeck] = useState(cardsData);
   const [playerOneHand, setPlayerOneHand] = useState([]);
   const [selectedCard, setSelectedCard] = useState();
   const [playerTwoHand, setPlayerTwoHand] = useState([]);
@@ -14,35 +14,35 @@ export default function CardGameProvider({ children }) {
 
   function findCardIndex(value, suit, cards) {
     return cards.findIndex(card => card.value === value && card.suit === suit);
-    
-    function passCard(card) {
-        const playerHands = [playerOneHand, playerTwoHand, playerThreeHand];
-        const playerHandSetFunctions = [setPlayerOneHand, setPlayerTwoHand, setPlayerThreeHand];
+  }    
+  function passCard(card) {
+    const playerHands = [playerOneHand, playerTwoHand, playerThreeHand];
+    const playerHandSetFunctions = [setPlayerOneHand, setPlayerTwoHand, setPlayerThreeHand];
         
         // arrays start at zero, but our players start at 1 :shrug:
-        const toHand = playerHands[to - 1] || deck;
-        const fromHand = playerHands[from - 1] || deck;
+    const toHand = playerHands[to - 1] || deck;
+    const fromHand = playerHands[from - 1] || deck;
         
-        const toSetFunction = playerHandSetFunctions[to - 1] || setDeck;
-        const fromSetFunction = playerHandSetFunctions[from - 1] || setDeck;
+    const toSetFunction = playerHandSetFunctions[to - 1] || setDeck;
+    const fromSetFunction = playerHandSetFunctions[from - 1] || setDeck;
         
-        const cardToMoveIndex = findCardIndex(card.value, card.suit, fromHand);
-        const [cardToMove] = fromHand.splice(cardToMoveIndex, 1);
+    const cardToMoveIndex = findCardIndex(card.value, card.suit, fromHand);
+    const [cardToMove] = fromHand.splice(cardToMoveIndex, 1);
         
-        toHand.push(cardToMove);
+    toHand.push(cardToMove);
         
-        toSetFunction([...toHand]);
-        fromSetFunction([...fromHand]);
+    toSetFunction([...toHand]);
+    fromSetFunction([...fromHand]);
         
-        setSelectedCard(null);
+    setSelectedCard(null);
         
-        const everything = {
-            deck, setDeck, playerOneHand, setPlayerOneHand, selectedCard, setSelectedCard, playerTwoHand,
-            setPlayerTwoHand, playerThreeHand, setPlayerThreeHand,from, setFrom, to, setTo,
+    const everything = {
+      deck, setDeck, playerOneHand, setPlayerOneHand, selectedCard, setSelectedCard, playerTwoHand,
+      setPlayerTwoHand, playerThreeHand, setPlayerThreeHand, from, setFrom, to, setTo,
             
-        };
+    };
         
-        return <CardGameContext.Provider value={everything}>
-    {children}
-  </CardGameContext.Provider>;
-    }
+    return <CardGameContext.Provider value={everything}>
+      {children}
+    </CardGameContext.Provider>;
+  }}
