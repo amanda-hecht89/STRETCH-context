@@ -13,7 +13,6 @@ export default function Card({ card, player }) {
     selectedCard, setSelectedCard, setFrom
   } = useCardGameContext();
   function handleCardClick() {
-    console.log(player);
     setFrom(player);
     setSelectedCard(card);
   }
