@@ -1,7 +1,11 @@
 import React from 'react';
 import CardList from './CardList';
+import { useCardGameContext } from './CardGameProvider';
 
-export default function Player({ player, setTo, hand, setFrom, setSelectedCard, selectedCard, to }) {
+export default function Player({ player, hand }) {
+  const {
+    selectedCard, setSelectedCard, to, setTo, setFrom
+  } = useCardGameContext();
   return (
     <div className={`player ${to === player ? 'selected-player' : ''}`} onClick={() => setTo(player)}>
       <p>Player {player}</p>

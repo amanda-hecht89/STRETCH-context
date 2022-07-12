@@ -6,7 +6,7 @@ import { findCardIndex } from './Utils';
 export default function ExecutePassButton() {
   const {
     deck, setDeck, playerOneHand, setPlayerOneHand, selectedCard, setSelectedCard, playerTwoHand,
-    setPlayerTwoHand, playerThreeHand, setPlayerThreeHand, from, setFrom, to, setTo
+    setPlayerTwoHand, playerThreeHand, setPlayerThreeHand, from, to,
   } = useCardGameContext();
 
   function passCard(card) {
@@ -29,12 +29,13 @@ export default function ExecutePassButton() {
     fromSetFunction([...fromHand]);
         
     setSelectedCard(null);
+  }
     
     
     
-    return (
-      <div className='execute-button' onClick={() => passCard(selectedCard)}>
-        Pass <Card card={selectedCard} /> from {from} to {to}
-      </div>
-    );
-  }}
+  return (
+    <div className='execute-button' onClick={() => passCard(selectedCard)}>
+        Pass <Card card={selectedCard} cardLocation='button' /> from {from} to {to}
+    </div>
+  );
+}
