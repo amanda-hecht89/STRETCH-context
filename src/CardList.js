@@ -1,7 +1,11 @@
 import React from 'react';
 import Card from './Card';
+import { useCardGameContext } from './CardGameProvider';
 
-export default function CardList({ cards, setSelectedCard, player, setFrom, selectedCard }) {
+export default function CardList({ cards, cardLocation }) {
+  const {
+    selectedCard, setSelectedCard, setFrom
+  } = useCardGameContext();
   return (
     <div className='card-list'>
       {
@@ -9,7 +13,7 @@ export default function CardList({ cards, setSelectedCard, player, setFrom, sele
           key={card.suit + card.value} 
           setSelectedCard={setSelectedCard} 
           selectedCard={selectedCard}
-          player={player}
+          player={cardLocation}
           setFrom={setFrom}
           card={card}
         />))
