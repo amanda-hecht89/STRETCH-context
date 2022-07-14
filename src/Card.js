@@ -1,4 +1,5 @@
 import React from 'react';
+import { useCardGameContext } from './CardGameProvider';
 
 const suitMap = {
   hearts: '❤️',
@@ -7,7 +8,10 @@ const suitMap = {
   diamonds: '♦️',
 };
 
-export default function Card({ card, selectedCard, setSelectedCard, setFrom, player }) {
+export default function Card({ card, player }) {
+  const {
+    selectedCard, setSelectedCard, setFrom
+  } = useCardGameContext();
   function handleCardClick() {
     setFrom(player);
     setSelectedCard(card);
@@ -19,7 +23,7 @@ export default function Card({ card, selectedCard, setSelectedCard, setFrom, pla
 
   return (
     <div className={`${thisIsTheSelectedCard ? 'selected' : ''} card`} 
-      onClick={handleCardClick}>
+      onClick={ handleCardClick }>
       <div>{suitMap[card.suit]}</div>
       <div>{card.value}</div>
     </div>
