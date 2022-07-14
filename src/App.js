@@ -27,7 +27,7 @@ function App() {
           }
         </section>
       </div>
-  );
     </CardGameProvider>
-  }
+  );
+}
 export default App;
